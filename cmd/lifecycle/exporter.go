@@ -315,6 +315,7 @@ func (e *exportCmd) initDaemonAppImage(analyzedMD files.Analyzed, logger log.Log
 func (e *exportCmd) initRemoteAppImage(analyzedMD files.Analyzed) (imgutil.Image, string, error) {
 	var appOpts = []imgutil.ImageOption{
 		remote.FromBaseImage(e.RunImageRef),
+		remote.WithMediaTypes(imgutil.OCITypes),
 	}
 
 	if e.supportsRunImageExtension() {
